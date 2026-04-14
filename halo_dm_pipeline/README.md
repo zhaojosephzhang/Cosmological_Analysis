@@ -335,7 +335,7 @@ Halo_DM_map_process_thread_P_joblib_observer_z.py
 ### Method Illustration
 
 <p align="center">
-  <img src="./assets/2D_LOS_Method.png" width="80%">
+  <img src="./assets/2D_LOS_Method.png" width="70%">
 </p>
 
 ---
@@ -343,7 +343,7 @@ Halo_DM_map_process_thread_P_joblib_observer_z.py
 ### Result Example
 
 <p align="center">
-  <img src="./assets/LOS_Halo_2D_map.png" width="70%">
+  <img src="./assets/LOS_Halo_2D_map.png" width="90%">
 </p>
 ---
 
