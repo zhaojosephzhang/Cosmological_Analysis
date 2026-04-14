@@ -48,6 +48,7 @@ To avoid manually chaining commands, a lightweight unified execution layer is pr
 ### Dry Run
 
 ```bash
+cd halo_dm_pipeline
 python3 run_halo_dm_pipeline.py all --dry-run
 ```
 
@@ -210,6 +211,9 @@ density_profile_rv_morebins.py
 * Supports multiple halo mass bins
 * Compares different feedback models and box sizes
 * Outputs profile curves with uncertainty bands
+  
+### Result Example
+![Density_Profle](Density_Profile.png)
 
 ---
 
@@ -226,6 +230,12 @@ DM_Impact_factor_morebin.py
 * Computes DM along sightlines with varying impact parameter
 * Probes CGM / halo gas distribution
 * Produces DM vs ( b / R_{200} ) relations
+
+---
+
+### Result Example
+
+![Impact Parameter Method](Combined_DM_20_n_Error_Median_Curves_50_100Mpc_latest.png)
 
 ---
 
@@ -253,6 +263,18 @@ Halo_DM_1D_map_joblib_withstellar.py
   * DM
   * Stellar column density
   * Metallicity
+
+---
+
+### Method Illustration
+
+![1D LOS Method](1D_los_method.png)
+
+---
+
+### Result Example
+
+![1D DM Distribution](Halo_1D_DM_distribution.png)
 
 ---
 
@@ -296,6 +318,18 @@ Halo_DM_map_process_thread_P_joblib_observer_z.py
   * Metallicity
   * Stellar formation time (SFT)
   * Neutral hydrogen (HI)
+
+---
+
+### Method Illustration
+
+![2D LOS Method](2D_LOS_Method.png)
+
+---
+
+### Result Example
+
+![2D Halo Map](LOS_Halo_2D_map.png)
 
 ---
 
@@ -388,4 +422,4 @@ assets/
 * Add automatic figure generation
 * Integrate HEALPix-based sky projection
 * Add angular correlation analysis for DM
-* Extend to full light-cone simul
+* Extend to full light-cone simulations
