@@ -9,7 +9,7 @@ This directory collects two complementary CROCODILE light-cone pipelines.
 
 **Figure 1. Parallel rotating-LoS geometry**
 
-![Figure 1](./figures/figure1_parallel_rotating_los.png)
+![Figure 1](./figures/figure1_parallel_rotating_los.jpg)
 
 **Figure 2. Box-stacking ray-tracing geometry**
 
