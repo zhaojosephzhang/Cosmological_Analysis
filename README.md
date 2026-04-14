@@ -1,135 +1,132 @@
 # Cosmological Simulation Analysis based on CROCODILE
 
 This repository contains a collection of analysis scripts built around simulation data from **[CROCODILE](https://sites.google.com/view/crocodilesimulation/)**, based on **GADGET4-Osaka**.
-<<<<<<< HEAD
-<<<<<<< HEAD
-- `fb_pipeline/`: baryon-fractoin-related analysis scripts
-- `halo_subhalo_catalog/`: FoF halo and subhalo catalog extraction plus validation utilities
-- `Light-cone_LoS_analysis/`: light-cone and line-of-sight analysis workflows, including the parallel rotating-LoS and box-stacking ray-tracing methods
-=======
-The main purpose of this repository is practical:
 
-- to help people who already have a specific analysis goal quickly locate useful scripts
-- to help people who are learning cosmological simulation data analysis get a fast overview of several commonly used workflows
-=======
+---
+
+## Overview
 
 The main purpose of this repository is practical:
 
-- to help users who already have a specific analysis goal quickly locate relevant scripts
-- to help users who are learning cosmological simulation data analysis get a fast overview of several commonly used workflows
+- to help users who already have a specific analysis goal quickly locate relevant scripts  
+- to provide a compact overview of commonly used workflows in cosmological simulation data analysis  
 
 Almost all codes in this repository are written in Python.
 
+---
+
 ## A Note on Code Style
 
-<<<<<<< HEAD
-These scripts were written primarily for getting scientific analysis done efficiently, not for polished software engineering.
-=======
-These scripts were written primarily for efficient scientific analysis rather than polished software engineering.
+These scripts were developed primarily for efficient scientific analysis rather than polished software engineering.
 
 That means:
 
-- coding style is often intuitive rather than highly standardized
-- comments are mixed in Chinese and English
-- naming conventions are not always uniform
-<<<<<<< HEAD
-- some scripts are tightly coupled to a specific HPC environment, MPI layout, file paths, and storage conventions
+- coding style is often intuitive rather than highly standardized  
+- comments may be mixed in Chinese and English  
+- naming conventions are not always uniform  
+- some scripts are tightly coupled to specific HPC environments (MPI layout, file paths, storage systems)  
 
-So for readers, the code may not always be very friendly or elegant. Please excuse that.
-=======
-- some scripts are tightly coupled to specific HPC environments, MPI layouts, file paths, and storage conventions
+Therefore, the code may not always be fully modular or user-friendly. Please treat this repository as a **practical research toolbox**.
 
-So for readers, the code may not always be especially elegant or beginner-friendly. Please excuse that.
->>>>>>> d0e70ef (modified README.md)
+---
 
-## What This Repository Provides
+## Repository Structure
 
-This repository is organized into several analysis pipelines and utility groups. Each subdirectory focuses on one type of simulation-data workflow.
+This repository is organized into several analysis pipelines and utility modules. Each subdirectory focuses on a specific type of workflow.
 
-### Available Pipelines
+### Core Pipelines
 
-- `fb_pipeline/`
-  feedback-related analysis scripts, including radial fb-profile calculations and redshift-batch submission workflows
+- `fb_pipeline/`  
+  Feedback-related analysis, including radial baryon fraction profiles and batch processing across redshifts  
 
-- `igm_pipeline/`
-  scripts for redshift evolution of `f_IGM`, `f_CGM`, and related baryonic component fractions
+- `igm_pipeline/`  
+  Analysis of redshift evolution of baryonic components, including  
+  `f_IGM`, `f_CGM`, and related quantities  
 
-- `halo_dm_pipeline/`
-  halo-centered local data extraction, density profile analysis, DM vs impact-parameter analysis, 1D sightline projections, and 2D observer-style mapping
+- `halo_dm_pipeline/`  
+  Halo-centered analysis tools, including:  
+  - density profile calculations  
+  - dispersion measure (DM) vs. impact parameter  
+  - 1D sightline projections  
+  - 2D observer-style maps  
 
-- `halo_subhalo_catalog/`
-  FoF halo and subhalo catalog extraction plus validation utilities
+- `halo_subhalo_catalog/`  
+  FoF halo and subhalo catalog extraction and validation utilities  
 
-<<<<<<< HEAD
+---
+
+### Light-cone & Line-of-Sight Analysis
+
+- `Light-cone_LoS_analysis/`  
+
+  Light-cone construction and line-of-sight (LoS) analysis based on CROCODILE grid data.  
+  This module currently includes two complementary strategies:
+
+  1. **Grid-based connection method**  
+     (`Grid_data_512_connection/`)  
+     - Parallel rotating LoS approach  
+     - Connects multiple simulation boxes along structured sightlines  
+
+  2. **Ray-tracing method**  
+     (`Ray_tracing/`)  
+     - Box-stacking ray tracing  
+     - Supports both rotating and non-rotating configurations  
+     - Includes CHIME-like sky window sampling (non-rotating mode)  
+
+---
+
 ## Intended Usage
 
-These scripts are meant as working analysis tools rather than a fully unified software package.
-=======
-- `Light-cone_LoS_analysis/`
-  light-cone and line-of-sight analysis workflows based on CROCODILE grid data. This directory currently includes two complementary strategies:
-  1. `Gird_data_512_connection/`: the parallel rotating-LoS method, which connects multiple boxes with a grid of parallel sightlines
-  2. `Ray_tracing/`: the box-stacking ray-tracing method, with both non-rotating and rotating-box implementations, plus CHIME-window sampling support in the non-rotating version
+These scripts are designed as **working analysis tools**, not a fully unified software package.
 
-## Intended Usage
+Typical use cases include:
 
-These scripts are meant as working analysis tools rather than a unified software package.
+- extracting halo-centered local datasets  
+- computing radial density and baryon profiles  
+- studying DM, CGM, IGM, stellar, and metallicity properties  
+- comparing **Fiducial vs. NoBH** simulations  
+- generating 1D/2D projected observables  
+- constructing light-cone DM products  
+- analyzing sightline-to-sightline variations  
+- comparing different light-cone construction strategies  
 
-In practice, the repository is most useful if you want to:
+Detailed workflows are described in the `README.md` files inside each subdirectory.
 
-- extract halo-centered local datasets from large simulation outputs
-- compute radial density profiles
-- study DM, CGM, IGM, stellar, and metallicity-related quantities
-- compare Fiducial and NoBH simulations
-- generate 1D or 2D halo-centered projected observables
-<<<<<<< HEAD
-
-Most workflows are described in the README files inside the corresponding subdirectories.
-=======
-- construct light-cone DM products and line-of-sight statistics from stitched simulation boxes
-- compare different light-cone building strategies for FRB-DM or foreground analyses
-
-Most workflows are described in the `README.md` files inside the corresponding subdirectories.
->>>>>>> d0e70ef (modified README.md)
+---
 
 ## About Portability
 
-Many scripts in this repository depend on:
+Many scripts depend on:
 
-- MPI
-- HDF5
-- specific HPC job schedulers
-<<<<<<< HEAD
-- fixed data layouts under `/sqfs/...`
-=======
-- fixed data layouts under `/sqfs/...` or other local storage systems
->>>>>>> d0e70ef (modified README.md)
-- simulation outputs from CROCODILE / GADGET4-Osaka runs
+- MPI-based parallel environments  
+- HDF5 data formats  
+- HPC job schedulers  
+- specific storage layouts (e.g., `/sqfs/...`)  
+- CROCODILE / GADGET4-Osaka simulation outputs  
 
-So while the scientific logic can often be reused elsewhere, direct execution may require environment-specific adjustment.
+While the **scientific logic is reusable**, direct execution may require environment-specific adjustments.
+
+---
 
 ## Citation
 
-If you directly use these codes to produce scientific analysis results, I would appreciate citation of:
+If you use this repository for scientific results, please consider citing:
 
-**Zhang et al. 2025**
+**Zhang et al. (2025)**  
+https://iopscience.iop.org/article/10.3847/1538-4357/ae00c2  
 
-https://iopscience.iop.org/article/10.3847/1538-4357/ae00c2
+---
 
-## Final Remark
+## Final Remarks
 
-This repository is best viewed as a practical toolbox for cosmological simulation analysis.
+This repository is best viewed as a **practical toolbox for cosmological simulation analysis**.
 
-If you are browsing it for the first time, the recommended starting points are:
+Recommended entry points:
 
-- `halo_subhalo_catalog/` for catalog generation and validation
-<<<<<<< HEAD
-- `halo_dm_pipeline/` for halo-centered gas / DM / stellar analysis
-- `igm_pipeline/` for IGM/CGM redshift-evolution analysis
-- `fb_pipeline/` for feedback-related radial profile workflows
+- `halo_subhalo_catalog/` → catalog generation  
+- `halo_dm_pipeline/` → halo-centered DM and gas analysis  
+- `igm_pipeline/` → baryon evolution analysis  
+- `fb_pipeline/` → feedback-related profiles  
+- `Light-cone_LoS_analysis/` → light-cone and LoS-based DM studies  
 
-
-=======
-- `halo_dm_pipeline/` for halo-centered gas, DM, and stellar analysis
-- `igm_pipeline/` for IGM/CGM redshift-evolution analysis
-- `fb_pipeline/` for feedback-related radial profile workflows
-- `Light-cone_LoS_analysis/` for stitched light-cone construction and LoS-based DM analysis
+---
