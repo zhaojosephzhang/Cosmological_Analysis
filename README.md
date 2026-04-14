@@ -17,7 +17,6 @@ The main purpose of this repository is practical:
 
 - to help users who already have a specific analysis goal quickly locate relevant scripts
 - to help users who are learning cosmological simulation data analysis get a fast overview of several commonly used workflows
->>>>>>> d0e70ef (modified README.md)
 
 Almost all codes in this repository are written in Python.
 
@@ -27,7 +26,6 @@ Almost all codes in this repository are written in Python.
 These scripts were written primarily for getting scientific analysis done efficiently, not for polished software engineering.
 =======
 These scripts were written primarily for efficient scientific analysis rather than polished software engineering.
->>>>>>> d0e70ef (modified README.md)
 
 That means:
 
@@ -75,7 +73,6 @@ These scripts are meant as working analysis tools rather than a fully unified so
 ## Intended Usage
 
 These scripts are meant as working analysis tools rather than a unified software package.
->>>>>>> d0e70ef (modified README.md)
 
 In practice, the repository is most useful if you want to:
 
@@ -129,7 +126,6 @@ If you are browsing it for the first time, the recommended starting points are:
 - `halo_dm_pipeline/` for halo-centered gas / DM / stellar analysis
 - `igm_pipeline/` for IGM/CGM redshift-evolution analysis
 - `fb_pipeline/` for feedback-related radial profile workflows
->>>>>>> eaa8d58 (update pipelines)
 
 
 =======
@@ -137,4 +133,3 @@ If you are browsing it for the first time, the recommended starting points are:
 - `igm_pipeline/` for IGM/CGM redshift-evolution analysis
 - `fb_pipeline/` for feedback-related radial profile workflows
 - `Light-cone_LoS_analysis/` for stitched light-cone construction and LoS-based DM analysis
->>>>>>> d0e70ef (modified README.md)
