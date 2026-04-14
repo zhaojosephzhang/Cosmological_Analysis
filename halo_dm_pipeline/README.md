@@ -240,7 +240,7 @@ DM_Impact_factor_morebin.py
 ### Result Example
 
 <p align="center">
-  <img src="./assets/Combined_DM_20_n_Error_Median_Curves_50_100Mpc_latest.png" width="100%">
+  <img src="./assets/Combined_DM_20_n_Error_Median_Curves_50_100Mpc_latest.png" width="80%">
 </p>
 
 ---
