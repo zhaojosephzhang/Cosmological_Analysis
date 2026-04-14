@@ -15,5 +15,5 @@ This directory collects two complementary CROCODILE light-cone pipelines.
 **Figure 2. Box-stacking ray-tracing geometry**
 
 <p align="center">
-<img src="./figures/figure2_box_stacking.png" width="50%">
+<img src="./figures/figure2_box_stacking.png" width="70%">
 </p>
