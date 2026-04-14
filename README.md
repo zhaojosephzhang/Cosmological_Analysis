@@ -1,7 +1,6 @@
 # Cosmological Simulation Analysis based on CROCODILE
 
-This repository contains a collection of analysis scripts built around simulation data from **CROCODILE**, based on **GADGET4-Osaka**.
-
+This repository contains a collection of analysis scripts built around simulation data from **[CROCODILE](https://sites.google.com/view/crocodilesimulation/)**, based on **GADGET4-Osaka**.
 <<<<<<< HEAD
 - `fb_pipeline/`: baryon-fractoin-related analysis scripts
 - `halo_subhalo_catalog/`: FoF halo and subhalo catalog extraction plus validation utilities
