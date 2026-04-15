@@ -26,7 +26,7 @@ That means:
 - naming conventions are not always uniform  
 - some scripts are tightly coupled to specific HPC environments (MPI layout, file paths, storage systems)  
 
-Therefore, the code may not always be fully modular or user-friendly. Please treat this repository as a **practical research toolbox**.
+Therefore, the code may not always be fully modular or user-friendly. Please excuse that and jsut treat this repository as a **practical research toolbox**.
 
 ---
 
