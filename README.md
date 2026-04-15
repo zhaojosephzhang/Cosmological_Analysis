@@ -110,7 +110,7 @@ While the **scientific logic is reusable**, direct execution may require environ
 
 ## Citation
 
-If you use this repository for scientific results, please consider citing:
+If you use this repository for scientific results directly, please consider citing:
 
 **Zhang et al. (2025)**  
 https://iopscience.iop.org/article/10.3847/1538-4357/ae00c2  
