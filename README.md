@@ -37,7 +37,7 @@ This repository is organized into several analysis pipelines and utility modules
 ### Core Pipelines
 
 - `fb_pipeline/`  
-  Baryon-Fraction-related analysis, including radial baryon fraction profiles and batch processing across redshifts  
+  Baryon-Fraction-related analysis, including radial baryon fraction profiles in halos and batch processing across redshifts  
 
 - `igm_pipeline/`  
   Analysis of redshift evolution of baryonic components, including  
@@ -126,7 +126,7 @@ Recommended entry points:
 - `halo_subhalo_catalog/` → catalog generation  
 - `halo_dm_pipeline/` → halo-centered DM and gas analysis  
 - `igm_pipeline/` → baryon evolution analysis in IGM and CGM for differnet components
-- `fb_pipeline/` → baryon-fraction profiles  
+- `fb_pipeline/` → baryon-fraction profiles in halos
 - `Light-cone_LoS_analysis/` → light-cone and LoS-based DM studies  
 
 ---
