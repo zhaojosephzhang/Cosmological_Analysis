@@ -37,7 +37,7 @@ This repository is organized into several analysis pipelines and utility modules
 ### Core Pipelines
 
 - `fb_pipeline/`  
-  Feedback-related analysis, including radial baryon fraction profiles and batch processing across redshifts  
+  Baryon-Fraction-related analysis, including radial baryon fraction profiles and batch processing across redshifts  
 
 - `igm_pipeline/`  
   Analysis of redshift evolution of baryonic components, including  
