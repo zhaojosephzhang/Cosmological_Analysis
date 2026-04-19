@@ -57,7 +57,7 @@ This repository is organized into several analysis pipelines and utility modules
 
 ### Light-cone & Line-of-Sight Analysis
 
-- `FALCON— light-cone and LoS analysis for FRB cosmology`  
+- `FALCON/`--(FRB Analysis & Light-cone COsmology simulatioN)
 
   Light-cone construction and line-of-sight (LoS) analysis based on CROCODILE grid data.  
   This module currently includes two complementary strategies:
