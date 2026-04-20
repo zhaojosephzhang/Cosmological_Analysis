@@ -87,9 +87,80 @@ This pipeline produces the redshift evolution of the following quantities:
 * `f_hot_diff`
 
 ## Output Location
+
 Results are written to:
-- storage_path
-- kdtree_output_path
+
+* `storage_path`
+* `kdtree_output_path`
+
+### `kdtree_output_path`
+
+This directory stores the **intermediate KDTree-based spatial indexing data**, designed to accelerate particle queries.
+
+Two types of files are generated:
+
+* `kdtree_group_{i}_{j}_{k}.h5`
+  These files partition the full simulation box into coarse spatial regions (groups of cells).
+  Each file contains particle data (positions and masses) organized by region and particle type.
+  This structure significantly reduces the search volume when querying particles around halos, avoiding full-box scans.
+
+* `halos_kdtree_{file_index}_{C_search}RV.h5`
+  These files store **halo-centered particle data** extracted from the grouped KDTree structure.
+  Each file contains a subset of halos, where halos are:
+
+  * **sorted in descending order of halo mass (`haloMV`)**
+  * then **assigned sequential HaloIDs**
+  * and finally **split into chunks (`slice_indices`) and stored across multiple HDF5 files**
+
+  Each halo entry includes:
+
+  * particle positions
+  * particle masses
+  * separated by particle type (gas, DM, star, BH)
+
+This two-level KDTree design enables efficient halo-based analysis by first narrowing down candidate regions and then constructing halo-local particle datasets.
+
+---
+
+### `storage_path`
+
+This directory stores the **final scientific outputs**, including:
+
+* halo gas mass catalogs:
+
+  * `halo_gas_{C_R200}_r200*.hdf5`
+
+* redshift evolution results:
+
+  * `f_IGM_components_final_*.txt`
+
+* intermediate accumulation files:
+
+  * `f_IGM_components_z_*_temp_MPI_FoF.txt`
+
+* diagnostic plots:
+
+  * `f_IGM_CGM_evolution_*.png`
+  * `f_subcomponents_fiducial.png`
+  * `f_BH_star_fiducial.png`
+
+These outputs represent the final processed results used for scientific analysis and figures.
+
+### Notes on Intermediate Outputs
+
+The KDTree-related outputs stored in `kdtree_output_path` (including both region-based and halo-based files) are **intermediate data products**.
+
+* These files can be safely removed to save disk space.
+* However, if they are deleted, the pipeline will **automatically rebuild them** during the next run, provided the same configuration (e.g., box size, region size, `group_size`, `C_search`) is used.
+* Rebuilding these structures can be computationally expensive.
+
+If the files are retained and the configuration remains unchanged, the pipeline will:
+
+* **detect that the KDTree files are up-to-date**
+* **skip the reconstruction step**
+* and proceed directly to the analysis stage
+
+This design enables a trade-off between **storage usage** and **runtime efficiency**.
 
 ## File Naming Convention
 Output file names include:
