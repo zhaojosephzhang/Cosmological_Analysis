@@ -143,33 +143,72 @@ This directory stores the **final scientific outputs**, including:
 
 These outputs represent the final processed results used for scientific analysis and figures.
 
-### Notes on Intermediate Outputs
+## Notes on Intermediate Outputs
 
-The KDTree-related outputs stored in `kdtree_output_path` (including both region-based and halo-based files) are **intermediate data products**.
+The pipeline generates two types of KDTree-based intermediate files, with different reuse behaviors:
 
-* These files can be safely removed to save disk space.
-* However, if they are deleted, the pipeline will **automatically rebuild them** during the next run, provided the same configuration (e.g., box size, region size, `group_size`, `C_search`) is used.
-* Rebuilding these structures can be computationally expensive.
+### Region-based KDTree (`kdtree_group_*.h5`)
 
-If the files are retained and the configuration remains unchanged, the pipeline will:
+* Depends only on simulation data and spatial partitioning parameters
+* Independent of halo selection (e.g., `C_R200`, mass cuts)
+* Can be safely reused across runs
 
-* **detect that the KDTree files are up-to-date**
-* **skip the reconstruction step**
-* and proceed directly to the analysis stage
+If retained:
 
-This design enables a trade-off between **storage usage** and **runtime efficiency**.
+* KDTree construction will be skipped
+
+If removed:
+
+* It will be rebuilt automatically (computationally expensive)
+
+---
+
+### Halo-based KDTree (`halos_kdtree_*.h5`)
+
+* Depends on analysis parameters such as:
+
+  * `C_R200`
+  * halo mass selection
+* Must be regenerated when these parameters change
+
+Even if files exist:
+
+* The pipeline may invalidate and rebuild them to ensure consistency
+
+---
+
+### Practical Notes
+
+* All intermediate files can be removed to save disk space
+* However:
+
+  * Removing region KDTree incurs a full rebuild (expensive)
+  * Removing halo KDTree only affects halo-level processing
+
+For repeated runs with different halo parameters:
+
+* Keeping region KDTree is strongly recommended
+
 
 ## File Naming Convention
-Output file names include:
-- `dataset label: n (NoBH) or f (Fiducial)`
-- `C_R200`
-- `halo mass range`
-- `logT`
-- `logrho`
+
+Output file names encode the key configuration parameters used in the analysis, including:
+
+* `dataset label`: `n` (NoBH) or `f` (Fiducial)
+* `C_R200`: radial cut in units of `R200`
+* `halo mass range`: (`logM_low` – `logM_up`)
+* `logT`: temperature threshold for phase classification
+* `logrho`: density threshold (relative to mean density)
+
+---
 
 ## Notes
 
-- This FoF-based version directly uses`R200` values provided in the halo catalog
-- The option to “recompute R200 exists internally”, but is currently disabled in the command-line interface
-- Future versions may expose this option as a dedicated command-line parameter
-- Both intermediate (temporary) files and final processed outputs are generated
+* This FoF-based version directly uses `R200` values provided in the halo catalog.
+
+* An option to recompute `R200` and `M200` is implemented internally (`if_Cal_R200`), but is currently disabled in the command-line interface.
+
+* Future versions may expose this option as a configurable runtime parameter.
+
+* Both intermediate (KDTree-related) data products and final scientific outputs are generated during execution.
+
